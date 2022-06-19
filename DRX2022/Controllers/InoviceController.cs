@@ -70,8 +70,8 @@ namespace DRX2022.Controllers
         {
             try
             {
-                await _inoviceService.DeleteAsync(new InoviceData { Id = id });
-                return Ok();
+               
+                return Ok(await _inoviceService.DeleteAsync(new InoviceData { Id = id }));
             }
             catch (Exception e)
             {

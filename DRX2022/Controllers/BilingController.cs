@@ -71,8 +71,8 @@ namespace DRX2022.Controllers
         {
             try
             {
-                await _BilingService.DeleteAsync(new BilingData { Id = id });
-                return Ok();
+                
+                return Ok(await _BilingService.DeleteAsync(new BilingData { Id = id }));
             }
             catch (Exception e)
             {

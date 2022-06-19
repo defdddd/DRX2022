@@ -71,8 +71,8 @@ namespace DRX2022.Controllers
         {
             try
             {
-                await _RentService.DeleteAsync(new RentData { Id = id });
-                return Ok();
+               
+                return Ok(await _RentService.DeleteAsync(new RentData { Id = id }));
             }
             catch (Exception e)
             {

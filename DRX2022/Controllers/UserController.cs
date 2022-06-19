@@ -74,8 +74,8 @@ namespace DRX2022.Controllers
         {
             try
             {
-                await _userService.DeleteAsync(new UserData { Id = id });
-                return Ok();
+                
+                return Ok(await _userService.DeleteAsync(new UserData { Id = id }));
             }
             catch (Exception e)
             {

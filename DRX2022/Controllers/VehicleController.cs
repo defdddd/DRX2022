@@ -68,8 +68,7 @@ namespace DRX2022.Controllers
         {
             try
             {
-                await _vehicleService.DeleteAsync(new VehicleData { Id = id });
-                return Ok();
+                return Ok(await _vehicleService.DeleteAsync(new VehicleData { Id = id }));
             }
             catch (Exception e)
             {
