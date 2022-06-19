@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.0.2" />
+    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.18.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.18.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DRX.DataAccess\DRX.DataAccess.csproj" />
+    <ProjectReference Include="..\DRX.Models\DRX.Models.csproj" />
+    <ProjectReference Include="..\DRX.Validators\DRX.Validators.csproj" />
+  </ItemGroup>
+
+</Project>
