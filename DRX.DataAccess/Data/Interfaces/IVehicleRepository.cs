@@ -10,5 +10,6 @@ namespace DRX.DataAccess.Data.Interfaces
 {
     public interface IVehicleRepository : IRepository<VehicleDTO>
     {
+        Task<IEnumerable<VehicleDTO>> GetAllBySearchFieldAsync(string type, string model);
     }
 }

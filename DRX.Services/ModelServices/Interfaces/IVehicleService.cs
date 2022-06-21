@@ -10,5 +10,6 @@ namespace DRX.Services.ModelServices.Interfaces
     public interface IVehicleService : IService<VehicleData>
     {
         Task<IEnumerable<VehicleData>> GetAvailableVehiclesAsync(string type, string model);
+        Task<IEnumerable<VehicleData>> GetAllSearchByVehiclesAsync(string type, string model);
     }
 }

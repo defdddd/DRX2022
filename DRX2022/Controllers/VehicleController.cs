@@ -93,6 +93,22 @@ namespace DRX2022.Controllers
             }
         }
 
+        [HttpGet("searchBy/{type},{model}")]
+        public async Task<IActionResult> GetAllSearchByVehicles(string type, string model)
+        {
+            try
+            {
+                if (type.Equals("n")) type = null;
+                if (model.Equals("n")) model = null;
+
+                return Ok(await _vehicleService.GetAllSearchByVehiclesAsync(type, model));
+            }
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
+        }
+
         [HttpGet("getById/{id}")]
         public async Task<IActionResult> SearchById(int id)
         {

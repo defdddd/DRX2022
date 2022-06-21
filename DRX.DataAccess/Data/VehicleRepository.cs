@@ -19,5 +19,15 @@ namespace DRX.DataAccess.Data
             this.sqlDataAccess = sqlDataAccess;
         }
 
+        public async Task<IEnumerable<VehicleDTO>> GetAllBySearchFieldAsync(string type, string model)
+        {
+            if(!string.IsNullOrEmpty(type) && !string.IsNullOrEmpty(model))
+              return (await GetAllAsync()).Where(x => x.Type == type && x.Model == model);
+     
+            if(string.IsNullOrEmpty(type))
+                return (await GetAllAsync()).Where(x => x.Model == model);
+
+            return (await GetAllAsync()).Where(x => x.Type == type);
+        }
     }
 }

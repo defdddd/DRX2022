@@ -85,7 +85,7 @@ namespace DRX2022.Controllers
         #region Other Operation
 
         [HttpGet("myBilingdata")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> GetMyBilingData()
         {
             try
@@ -99,6 +99,19 @@ namespace DRX2022.Controllers
             }
         }
 
+        [HttpGet("getById/{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetBilingDataById(int id)
+        {
+            try
+            {    
+                return Ok(await _BilingService.SearchByIdAsync(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
 
         #endregion
 
