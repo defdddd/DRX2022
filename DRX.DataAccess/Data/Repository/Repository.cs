@@ -23,14 +23,14 @@ namespace DRX.DataAccess.Data.Repository
         {
             using var connection = new SqlConnection(sqlDataAccess.Connection);
 
-            return await connection.GetAllAsync<T>();
+            return await connection.GetAllAsync<T>() ?? Enumerable.Empty<T>();
         }
 
         public IEnumerable<T> GetAll()
         {
             using var connection = new SqlConnection(sqlDataAccess.Connection);
 
-            return connection.GetAll<T>();
+            return connection.GetAll<T>() ?? Enumerable.Empty<T>();
         }
 
 

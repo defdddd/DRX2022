@@ -77,6 +77,13 @@ namespace DRX.Services.ModelServices
 
             await ValidatorTool.FluentValidate(_validator, value);
 
+
+            var vehicleDTO = await _repositories.VehicleRepository.SearchByIdAsync(value.VehicleId);
+
+            vehicleDTO.Location = value.LastLocation;
+
+            _ = await _repositories.VehicleRepository.UpdateAsync(vehicleDTO) ?? throw new Exception("Could not update the vehicle");
+
             var rentDTO = await _repositories.RentRepository.UpdateAsync(_mapper.Map<RentDTO>(value));
 
             return _mapper.Map<RentData>(rentDTO);
