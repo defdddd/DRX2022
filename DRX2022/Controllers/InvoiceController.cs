@@ -12,10 +12,10 @@ namespace DRX2022.Controllers
 {
     [Route("DRX2022/[controller]")]
     [ApiController]
-    public class InoviceController : ControllerBase
+    public class InvoiceController : ControllerBase
     {
-        private readonly IInoviceService _inoviceService;
-        public InoviceController(IInoviceService InoviceService)
+        private readonly IInvoiceService _inoviceService;
+        public InvoiceController(IInvoiceService InoviceService)
         {
             _inoviceService = InoviceService;
         }
@@ -37,7 +37,7 @@ namespace DRX2022.Controllers
         }
 
         [HttpPost("insert")]
-        public async Task<IActionResult> Insert([FromBody] InoviceData inovice)
+        public async Task<IActionResult> Insert([FromBody] InvoiceData inovice)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace DRX2022.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<IActionResult> Update([FromBody] InoviceData inovice)
+        public async Task<IActionResult> Update([FromBody] InvoiceData inovice)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace DRX2022.Controllers
             try
             {
                
-                return Ok(await _inoviceService.DeleteAsync(new InoviceData { Id = id }));
+                return Ok(await _inoviceService.DeleteAsync(new InvoiceData { Id = id }));
             }
             catch (Exception e)
             {
@@ -83,14 +83,14 @@ namespace DRX2022.Controllers
 
         #region Other Operation
 
-        [HttpGet("myInovicedata")]
+        [HttpGet("myInvoicedata")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetMyInoviceData()
         {
             try
             {
                 var userId = int.Parse(User.FindFirst("Identifier")?.Value);
-                return Ok(await _inoviceService.GetMyInovicesAsync(userId));
+                return Ok(await _inoviceService.GetMyInvoicesAsync(userId));
             }
             catch (Exception e)
             {
@@ -102,7 +102,7 @@ namespace DRX2022.Controllers
         #endregion
 
         #region Private methods
-        private async Task CheckRole(InoviceData inovice)
+        private async Task CheckRole(InvoiceData inovice)
         {
             var userId = int.Parse(User.FindFirst("Identifier")?.Value);
             var role = User.FindFirst(ClaimTypes.Role)?.Value;

@@ -15,6 +15,22 @@ namespace DRX.Validators.ModelValidator
             RuleFor(x => x.Name)
                 .Cascade(CascadeMode.Stop)
                 .NotEmpty();
+
+            RuleFor(x => x.Model)
+                .Cascade(CascadeMode.Stop)
+                .NotEmpty();
+
+            RuleFor(x => x.PricePerMinute)
+                .Cascade(CascadeMode.Stop)
+                .NotEmpty();
+
+            RuleFor(x => x.Location)
+                .Cascade(CascadeMode.Stop)
+                .NotEmpty();
+
+            RuleFor(x => x.Type)
+                .Cascade(CascadeMode.Stop)
+                .NotEmpty();
         }
     }
 }

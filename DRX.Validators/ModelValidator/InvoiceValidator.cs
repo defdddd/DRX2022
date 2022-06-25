@@ -8,23 +8,27 @@ using System.Threading.Tasks;
 
 namespace DRX.Validators.ModelValidator
 {
-    public class RentValidator : AbstractValidator<RentData>
+    public class InvoiceValidator : AbstractValidator<InvoiceData>
     {
-        public RentValidator()
+        public InvoiceValidator()
         {
-            RuleFor(x => x.LastLocation)
-                .Cascade(CascadeMode.Stop)
-                .NotEmpty();
-
-            RuleFor(x => x.UserId)
-                .Cascade(CascadeMode.Stop)
-                .NotEmpty();
-
             RuleFor(x => x.VehicleId)
                 .Cascade(CascadeMode.Stop)
                 .NotEmpty();
 
-            RuleFor(x => x.RentDate)
+            RuleFor(x => x.Date)
+                .Cascade(CascadeMode.Stop)
+                .NotEmpty();
+
+            RuleFor(x => x.BilingId)
+                .Cascade(CascadeMode.Stop)
+                .NotEmpty();
+
+            RuleFor(x => x.Price)
+                .Cascade(CascadeMode.Stop)
+                .NotEmpty();
+
+            RuleFor(x => x.UsedTime)
                 .Cascade(CascadeMode.Stop)
                 .NotEmpty();
         }

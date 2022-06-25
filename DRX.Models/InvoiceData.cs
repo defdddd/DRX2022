@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DRX.Models
 {
-    public class InoviceData
+    public class InvoiceData
     {
         public int Id { get; set; }
         public int BilingId { get; set; }

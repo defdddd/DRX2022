@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace DRX.DataAccess.Data.DTOs
 {
-    [Table("InoviceData")]
-    public class InoviceDTO
+    [Table("InvoiceData")]
+    public class InvoiceDTO
     {
         public int Id { get; set; }
         public int BilingId { get; set; }

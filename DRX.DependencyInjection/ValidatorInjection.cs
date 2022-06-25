@@ -16,7 +16,7 @@ namespace DRX.DependencyInjection
         {
             services.AddSingleton<IValidator<UserData>, UserValidator>();
             services.AddSingleton<IValidator<BilingData>, BilingValidator>();
-            services.AddSingleton<IValidator<InoviceData>, InoviceValidator>();
+            services.AddSingleton<IValidator<InvoiceData>, InvoiceValidator>();
             services.AddSingleton<IValidator<VehicleData>, VehicleValidator>();
             services.AddSingleton<IValidator<RentData>, RentValidator>();
 

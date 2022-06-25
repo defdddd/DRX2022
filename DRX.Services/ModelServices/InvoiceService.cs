@@ -13,41 +13,41 @@ using System.Threading.Tasks;
 
 namespace DRX.Services.ModelServices
 {
-    public class InoviceService : IInoviceService
+    public class InvoiceService : IInvoiceService
     {
         private readonly IRepositories _repositories;
-        private readonly IValidator<InoviceData> _validator;
+        private readonly IValidator<InvoiceData> _validator;
         private readonly IMapper _mapper;
 
-        public InoviceService(IRepositories repositories, IValidator<InoviceData> validator, IMapper mapper)
+        public InvoiceService(IRepositories repositories, IValidator<InvoiceData> validator, IMapper mapper)
         {
             _repositories = repositories;
             _validator = validator;
             _mapper = mapper;
         }
-        public async Task<bool> DeleteAsync(InoviceData value)
+        public async Task<bool> DeleteAsync(InvoiceData value)
         {
-            var inoviceDTO = _mapper.Map<InoviceDTO>(value);
+            var inoviceDTO = _mapper.Map<InvoiceDTO>(value);
 
             return await _repositories.InoviceRepository.DeleteAsync(inoviceDTO);
         }
 
-        public async Task<IEnumerable<InoviceData>> GetAllAsync()
+        public async Task<IEnumerable<InvoiceData>> GetAllAsync()
         {
             var Inovices = await _repositories.InoviceRepository.GetAllAsync();
 
             if (!Inovices.Any()) throw new ValidationException("This table is empty");
 
-            return _mapper.Map<IEnumerable<InoviceData>>(Inovices);
+            return _mapper.Map<IEnumerable<InvoiceData>>(Inovices);
         }
 
-        public async Task<IEnumerable<InoviceData>> GetMyInovicesAsync(int userId)
+        public async Task<IEnumerable<InvoiceData>> GetMyInvoicesAsync(int userId)
         {
             var bilingId = (await _repositories.BilingRepository.GetBilingByUserIdAsync(userId)).Id;
 
-            var inoviceDTOs= await _repositories.InoviceRepository.GetMyInoviceAsync(bilingId);
+            var inoviceDTOs= await _repositories.InoviceRepository.GetMyInvoicesAsync(bilingId);
 
-            return _mapper.Map<IEnumerable<InoviceData>>(inoviceDTOs);
+            return _mapper.Map<IEnumerable<InvoiceData>>(inoviceDTOs);
         }
 
         public async Task<int> GetUserIdByBilingId(int bilingId)
@@ -57,36 +57,36 @@ namespace DRX.Services.ModelServices
             return bilingDTO.UserId;
         }
 
-        public async Task<InoviceData> InsertAsync(InoviceData value)
+        public async Task<InvoiceData> InsertAsync(InvoiceData value)
         {
             if (await _repositories.InoviceRepository.SearchByIdAsync(value.Id) is not null)
                 throw new ValidationException("This vehicle is allready in use");
 
             await ValidatorTool.FluentValidate(_validator, value);
 
-            var inoviceDTO = await _repositories.InoviceRepository.InsertAsync(_mapper.Map<InoviceDTO>(value));
+            var inoviceDTO = await _repositories.InoviceRepository.InsertAsync(_mapper.Map<InvoiceDTO>(value));
 
-            return _mapper.Map<InoviceData>(inoviceDTO);
+            return _mapper.Map<InvoiceData>(inoviceDTO);
 
         }
 
-        public async Task<InoviceData> SearchByIdAsync(int id)
+        public async Task<InvoiceData> SearchByIdAsync(int id)
         {
             var InoviceDTO = await _repositories.InoviceRepository.SearchByIdAsync(id);
 
-            return _mapper.Map<InoviceData>(InoviceDTO);
+            return _mapper.Map<InvoiceData>(InoviceDTO);
         }
 
-        public async Task<InoviceData> UpdateAsync(InoviceData value)
+        public async Task<InvoiceData> UpdateAsync(InvoiceData value)
         {
             if (await _repositories.InoviceRepository.SearchByIdAsync(value.Id) is null)
                 throw new ValidationException("Inovice does not exists");
 
             await ValidatorTool.FluentValidate(_validator, value);
 
-            var inoviceDTO = await _repositories.InoviceRepository.UpdateAsync(_mapper.Map<InoviceDTO>(value));
+            var inoviceDTO = await _repositories.InoviceRepository.UpdateAsync(_mapper.Map<InvoiceDTO>(value));
 
-            return _mapper.Map<InoviceData>(inoviceDTO);
+            return _mapper.Map<InvoiceData>(inoviceDTO);
         }
     }
 }

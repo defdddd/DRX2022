@@ -15,7 +15,7 @@ namespace DRX.Mappers
         {
             CreateMap<VehicleData, VehicleDTO>().ReverseMap();
             CreateMap<BilingData, BilingDTO>().ReverseMap();
-            CreateMap<InoviceData, InoviceDTO>().ReverseMap();
+            CreateMap<InvoiceData, InvoiceDTO>().ReverseMap();
             CreateMap<RentData, RentDTO>().ReverseMap();
             CreateMap<UserData, UserDTO>().ReverseMap();
         }

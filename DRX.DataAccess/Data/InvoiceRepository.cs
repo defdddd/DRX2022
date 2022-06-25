@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace DRX.DataAccess.Data
 {
-    public class InoviceRepository : Repository<InoviceDTO>, IInoviceRepository
+    public class InvoiceRepository : Repository<InvoiceDTO>, IInvoiceRepository
     {
-        public InoviceRepository(ISqlDataAccess sqlDataAccess)
+        public InvoiceRepository(ISqlDataAccess sqlDataAccess)
         {
             this.sqlDataAccess = sqlDataAccess;
         }
 
-        public async Task<IEnumerable<InoviceDTO>> GetMyInoviceAsync(int bilingId)
+        public async Task<IEnumerable<InvoiceDTO>> GetMyInvoicesAsync(int bilingId)
         {
             return (await GetAllAsync()).Where(x => x.BilingId == bilingId);
         }

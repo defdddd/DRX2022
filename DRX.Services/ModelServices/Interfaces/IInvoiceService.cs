@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DRX.Services.ModelServices.Interfaces
 {
-    public interface IInoviceService : IService<InoviceData>
+    public interface IInvoiceService : IService<InvoiceData>
     {
         Task<int> GetUserIdByBilingId(int bilingId);
-        Task<IEnumerable<InoviceData>> GetMyInovicesAsync(int userId);
+        Task<IEnumerable<InvoiceData>> GetMyInvoicesAsync(int userId);
     }
 }

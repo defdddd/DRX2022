@@ -13,7 +13,7 @@ namespace DRX.DataAccess.UnitOfWork
     {
         private ISqlDataAccess _sqlDataAccess;
         public IBilingRepository BilingRepository => new BilingRepository(_sqlDataAccess);
-        public IInoviceRepository InoviceRepository => new InoviceRepository(_sqlDataAccess);
+        public IInvoiceRepository InoviceRepository => new InvoiceRepository(_sqlDataAccess);
         public IRentRepository RentRepository => new RentRepository(_sqlDataAccess);
         public IUserRepository UserRepository => new UserRepository(_sqlDataAccess);
         public IVehicleRepository VehicleRepository => new VehicleRepository(_sqlDataAccess);

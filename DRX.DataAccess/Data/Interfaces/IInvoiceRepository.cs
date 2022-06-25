@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace DRX.DataAccess.Data.Interfaces
 {
-    public interface IInoviceRepository : IRepository<InoviceDTO>
+    public interface IInvoiceRepository : IRepository<InvoiceDTO>
     {
-        Task<IEnumerable<InoviceDTO>> GetMyInoviceAsync(int bilingId);
+        Task<IEnumerable<InvoiceDTO>> GetMyInvoicesAsync(int bilingId);
     }
 }

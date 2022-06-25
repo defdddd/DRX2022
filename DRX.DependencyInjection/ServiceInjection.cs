@@ -27,7 +27,7 @@ namespace DRX.DependencyInjection
 
             //ModelServices
             services.AddSingleton<IBilingService, BilingService>();
-            services.AddSingleton<IInoviceService, InoviceService>();
+            services.AddSingleton<IInvoiceService, InvoiceService>();
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<IRentService, RentService>();
             services.AddSingleton<IVehicleService, VehicleService>();
