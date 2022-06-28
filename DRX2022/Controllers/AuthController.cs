@@ -46,5 +46,21 @@ namespace DRX2022.Controllers
             }
         }
 
+       
+
+        [HttpGet("checkLogin")]
+        public IActionResult Check()
+        {
+            try
+            {
+                var userId = int.Parse(User.FindFirst("Identifier")?.Value);
+
+                if (userId > 0) return Ok(true);
+            }
+            catch { }
+
+            return Ok(false);
+
+        }
     }
 }
