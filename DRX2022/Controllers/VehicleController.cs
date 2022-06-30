@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
+using System.Linq;
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -79,6 +81,86 @@ namespace DRX2022.Controllers
         #endregion
 
         #region Other Operation
+
+
+
+        #region Counts
+
+        [HttpGet("availableCount")]
+        public async Task<IActionResult> AvailableCount()
+        {
+            try
+            {
+                var result = await _vehicleService.GetAllAvailableVehiclesAsync();
+                return Ok(result.Count());
+            }
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
+        }
+
+
+        [HttpGet("AllCount")]
+        public async Task<IActionResult> GetAvailableVehicles()
+        {
+            try
+            {
+                var result = await _vehicleService.GetAllAsync();
+                return Ok(result.Count());
+            }
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
+        }
+
+        [HttpGet("AllElectricCount")]
+        public async Task<IActionResult> GetAllElectricCount()
+        {
+            try
+            {
+                var result = await _vehicleService.GetAllAsync();
+                return Ok(result.Count( x => x.Model.Equals("Electric")));
+            }
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
+        }
+
+        [HttpGet("AllBikesCount")]
+        public async Task<IActionResult> GetAllBikesCount()
+        {
+            try
+            {
+                var result = await _vehicleService.GetAllAsync();
+                return Ok(result.Count(x => x.Type.Equals("Bike")));
+            }
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
+        }
+
+        [HttpGet("AllCarCount")]
+        public async Task<IActionResult> GetAllCarCount()
+        {
+            try
+            {
+                var result = await _vehicleService.GetAllAsync();
+                return Ok(result.Count(x => x.Type.Equals("Car")));
+            }
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
+        }
+
+        #endregion
+
+
+
 
         [HttpGet("available/{type},{model}")]
         public async Task<IActionResult> GetAvailableVehicles(string type, string model)

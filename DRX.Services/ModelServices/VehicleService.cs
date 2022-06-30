@@ -41,6 +41,11 @@ namespace DRX.Services.ModelServices
             return _mapper.Map<IEnumerable<VehicleData>>(Vehicles);
         }
 
+        public async Task<IEnumerable<VehicleData>> GetAllAvailableVehiclesAsync()
+        {
+            return (await GetAllAsync()).Where(x => !(_repositories.RentRepository.CheckRent(x.Id)));
+        }
+
         public async Task<IEnumerable<VehicleData>> GetAllSearchByVehiclesAsync(string type, string model)
         {
             if (string.IsNullOrEmpty(type) && string.IsNullOrEmpty(model)) throw new Exception("Search options are null");
