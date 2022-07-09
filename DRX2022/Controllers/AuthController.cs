@@ -1,5 +1,6 @@
 ﻿using DRX.Models;
 using DRX.Services.AuthService;
+using DRX.Services.EmailService;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -13,9 +14,11 @@ namespace DRX2022.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
-        public AuthController(IAuthService authService)
+        private readonly IEmailService _emailService;
+        public AuthController(IAuthService authService, IEmailService emailService)
         {
             _authService = authService;
+            _emailService = emailService;
         }
       
         // POST api/<AuthController>
@@ -38,7 +41,11 @@ namespace DRX2022.Controllers
         {
             try
             {
-                return Ok(await _authService.RegisterAsync(user));
+                var result = await _authService.RegisterAsync(user);
+
+                await _emailService.SendCreatedEmailAsync(result.Email);
+
+                return Ok(true);
             }
             catch (Exception e)
             {

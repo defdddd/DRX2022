@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DRX.DataAccess.UnitOfWork;
 using DRX.Services.AuthService;
+using DRX.Services.EmailService;
 using DRX.Services.ModelServices;
 using DRX.Services.ModelServices.Interfaces;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +25,15 @@ namespace DRX.DependencyInjection
                     Config.GetConnectionString("MySecretKey"),
                     provider.GetService<IMapper>())
             );
+
+            //EmailService
+            services.AddSingleton<IEmailService>
+                (
+                    x =>
+                       new EmailService(x.GetService<IAuthService>(),
+                       x.GetService<IRepositories>().UserRepository,
+                       Config.GetConnectionString("EmailKey")
+                ));
 
             //ModelServices
             services.AddSingleton<IBilingService, BilingService>();

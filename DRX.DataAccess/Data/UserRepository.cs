@@ -26,5 +26,10 @@ namespace DRX.DataAccess.Data
         {
             return (await GetAllAsync()).Where(x => x.UserName == username).FirstOrDefault();
         }
+
+        public async Task<bool> CheckEmailAsync(string email)
+        {
+            return (await GetAllAsync()).Any(x => x.Email == email);
+        }
     }
 }

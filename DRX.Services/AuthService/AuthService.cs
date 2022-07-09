@@ -90,7 +90,7 @@ namespace DRX.Services.AuthService
             return true;
         }
 
-        public async Task<bool> RegisterAsync(UserData user)
+        public async Task<UserData> RegisterAsync(UserData user)
         {
             if (await CheckEmailAsync(user.Email))
                 throw new ValidationException("Invalid email");
@@ -106,7 +106,8 @@ namespace DRX.Services.AuthService
 
             var result = _mapper.Map<UserData, UserDTO>(user);
 
-            return null != await _repostiories.UserRepository.InsertAsync(result);
+            return _mapper.Map<UserData>(await _repostiories.UserRepository.InsertAsync(result));
+           
         }
     }
 }

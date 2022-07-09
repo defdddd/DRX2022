@@ -11,6 +11,6 @@ namespace DRX.Services.AuthService
     {
         Task<dynamic> GenerateTokenAsync(AuthData authData);
         Task<bool> IsValidUserNameAndPassowrdAsync(AuthData authData);
-        Task<bool> RegisterAsync(UserData user);
+        Task<UserData> RegisterAsync(UserData user);
     }
 }

@@ -12,6 +12,6 @@ namespace DRX.DataAccess.Data.Interfaces
     {
         Task<UserDTO> SearchByUserNameAsync(string username);
         Task<UserDTO> SearchByEmailAsync(string email);
-
+        Task<bool> CheckEmailAsync(string email);
     }
 }
