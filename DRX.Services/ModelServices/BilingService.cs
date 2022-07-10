@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using DRX.DataAccess.Data.DTOs;
+using DRX.DataAccess.Data.Domains;
 using DRX.DataAccess.UnitOfWork;
-using DRX.Models;
+using DRX.DTOs;
 using DRX.Services.ModelServices.Interfaces;
 using DRX.Validators.ToolValidator;
 using FluentValidation;
@@ -16,37 +16,37 @@ namespace DRX.Services.ModelServices
     public class BilingService : IBilingService
     {
         private readonly IRepositories _repositories;
-        private readonly IValidator<BilingData> _validator;
+        private readonly IValidator<BilingDTO> _validator;
         private readonly IMapper _mapper;
-        public BilingService(IRepositories repositories, IValidator<BilingData> validator, IMapper mapper)
+        public BilingService(IRepositories repositories, IValidator<BilingDTO> validator, IMapper mapper)
         {
             _repositories = repositories;
             _validator = validator;
             _mapper = mapper;
         }
-        public async Task<bool> DeleteAsync(BilingData value)
+        public async Task<bool> DeleteAsync(BilingDTO value)
         {
-            var bilingDTO = _mapper.Map<BilingDTO>(value);
+            var bilingDTO = _mapper.Map<Biling>(value);
 
             return await _repositories.BilingRepository.DeleteAsync(bilingDTO);
         }
 
-        public async Task<IEnumerable<BilingData>> GetAllAsync()
+        public async Task<IEnumerable<BilingDTO>> GetAllAsync()
         {
             var Bilings = await _repositories.BilingRepository.GetAllAsync();
 
             if (!Bilings.Any()) throw new ValidationException("This table is empty");
 
-            return _mapper.Map<IEnumerable<BilingData>>(Bilings);
+            return _mapper.Map<IEnumerable<BilingDTO>>(Bilings);
         }
 
-        public async Task<BilingData> GetBilingByUserIdAsync(int id)
+        public async Task<BilingDTO> GetBilingByUserIdAsync(int id)
         {
             var bilingDto = await _repositories.BilingRepository.GetBilingByUserIdAsync(id);
-            return _mapper.Map<BilingData>(bilingDto);
+            return _mapper.Map<BilingDTO>(bilingDto);
         }
 
-        public async Task<BilingData> InsertAsync(BilingData value)
+        public async Task<BilingDTO> InsertAsync(BilingDTO value)
         {
             if ((await _repositories.BilingRepository.SearchByIdAsync(value.Id)) is not null)
                 throw new ValidationException("Biling exists allready");
@@ -56,29 +56,29 @@ namespace DRX.Services.ModelServices
 
             await ValidatorTool.FluentValidate(_validator, value);
 
-            var bilingDTO = await _repositories.BilingRepository.InsertAsync(_mapper.Map<BilingDTO>(value));
+            var bilingDTO = await _repositories.BilingRepository.InsertAsync(_mapper.Map<Biling>(value));
 
-            return _mapper.Map<BilingData>(bilingDTO);
+            return _mapper.Map<BilingDTO>(bilingDTO);
 
         }
 
-        public async Task<BilingData> SearchByIdAsync(int id)
+        public async Task<BilingDTO> SearchByIdAsync(int id)
         {
             var BilingDTO = await _repositories.BilingRepository.SearchByIdAsync(id);
 
-            return _mapper.Map<BilingData>(BilingDTO);
+            return _mapper.Map<BilingDTO>(BilingDTO);
         }
 
-        public async Task<BilingData> UpdateAsync(BilingData value)
+        public async Task<BilingDTO> UpdateAsync(BilingDTO value)
         {
             if ((await _repositories.BilingRepository.SearchByIdAsync(value.Id)) is null)
                 throw new ValidationException("Biling does not exists");
 
             await ValidatorTool.FluentValidate(_validator, value);
 
-            var bilingDTO = await _repositories.BilingRepository.UpdateAsync(_mapper.Map<BilingDTO>(value));
+            var bilingDTO = await _repositories.BilingRepository.UpdateAsync(_mapper.Map<Biling>(value));
 
-            return _mapper.Map<BilingData>(bilingDTO);
+            return _mapper.Map<BilingDTO>(bilingDTO);
         }
     }
 }

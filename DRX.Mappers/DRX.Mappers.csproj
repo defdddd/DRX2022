@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DRX.DataAccess\DRX.DataAccess.csproj" />
-    <ProjectReference Include="..\DRX.Models\DRX.Models.csproj" />
+    <ProjectReference Include="..\DRX.Models\DRX.DTOs.csproj" />
   </ItemGroup>
 
 </Project>

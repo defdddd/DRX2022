@@ -1,4 +1,4 @@
-﻿using DRX.Models;
+﻿using DRX.DTOs;
 using DRX.Services.ModelServices.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -38,7 +38,7 @@ namespace DRX2022.Controllers
 
         [HttpPost("insert")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Insert([FromBody] VehicleData Vehicle)
+        public async Task<IActionResult> Insert([FromBody] VehicleDTO Vehicle)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace DRX2022.Controllers
 
         [HttpPut("update")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update([FromBody] VehicleData Vehicle)
+        public async Task<IActionResult> Update([FromBody] VehicleDTO Vehicle)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace DRX2022.Controllers
         {
             try
             {
-                return Ok(await _vehicleService.DeleteAsync(new VehicleData { Id = id }));
+                return Ok(await _vehicleService.DeleteAsync(new VehicleDTO { Id = id }));
             }
             catch (Exception e)
             {

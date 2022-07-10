@@ -1,4 +1,4 @@
-﻿using DRX.Models;
+﻿using DRX.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace DRX.Services.ModelServices.Interfaces
 {
-    public interface IBilingService : IService<BilingData>
+    public interface IBilingService : IService<BilingDTO>
     {
-        Task<BilingData> GetBilingByUserIdAsync(int id);
+        Task<BilingDTO> GetBilingByUserIdAsync(int id);
     }
 }

@@ -1,4 +1,4 @@
-﻿using DRX.DataAccess.Data.DTOs;
+﻿using DRX.DataAccess.Data.Domains;
 using DRX.DataAccess.Data.Interfaces;
 using DRX.DataAccess.Data.Repository;
 using DRX.DataAccess.SqlDataAcces;
@@ -10,19 +10,19 @@ using System.Threading.Tasks;
 
 namespace DRX.DataAccess.Data
 {
-    public class UserRepository : Repository<UserDTO>, IUserRepository
+    public class UserRepository : Repository<User>, IUserRepository
     {
         public UserRepository(ISqlDataAccess sqlDataAccess)
         {
               this.sqlDataAccess = sqlDataAccess;
         }
 
-        public async Task<UserDTO> SearchByEmailAsync(string email)
+        public async Task<User> SearchByEmailAsync(string email)
         {
             return (await GetAllAsync()).Where(x => x.Email == email).FirstOrDefault();
         }
 
-        public async Task<UserDTO> SearchByUserNameAsync(string username)
+        public async Task<User> SearchByUserNameAsync(string username)
         {
             return (await GetAllAsync()).Where(x => x.UserName == username).FirstOrDefault();
         }

@@ -1,4 +1,4 @@
-﻿using DRX.Models;
+﻿using DRX.DTOs;
 using DRX.Services.ModelServices.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -40,7 +40,7 @@ namespace DRX2022.Controllers
 
         [HttpPost("insert")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Insert([FromBody] UserData user)
+        public async Task<IActionResult> Insert([FromBody] UserDTO user)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace DRX2022.Controllers
 
         [HttpPut("update")]
         [Authorize(Roles = "Admin,User")]
-        public async Task<IActionResult> Update([FromBody] UserData user)
+        public async Task<IActionResult> Update([FromBody] UserDTO user)
         {
             try
             {
@@ -75,7 +75,7 @@ namespace DRX2022.Controllers
             try
             {
                 
-                return Ok(await _userService.DeleteAsync(new UserData { Id = id }));
+                return Ok(await _userService.DeleteAsync(new UserDTO { Id = id }));
             }
             catch (Exception e)
             {
@@ -139,7 +139,7 @@ namespace DRX2022.Controllers
         #endregion
 
         #region Private methods
-        private async Task CheckRole(UserData user)
+        private async Task CheckRole(UserDTO user)
         {
             var userId = int.Parse(User.FindFirst("Identifier")?.Value);
             var userData = await _userService.SearchByIdAsync(user.Id);

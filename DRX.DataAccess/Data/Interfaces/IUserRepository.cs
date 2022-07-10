@@ -1,4 +1,4 @@
-﻿using DRX.DataAccess.Data.DTOs;
+﻿using DRX.DataAccess.Data.Domains;
 using DRX.DataAccess.Data.Repository;
 using System;
 using System.Collections.Generic;
@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace DRX.DataAccess.Data.Interfaces
 {
-    public interface IUserRepository : IRepository<UserDTO>
+    public interface IUserRepository : IRepository<User>
     {
-        Task<UserDTO> SearchByUserNameAsync(string username);
-        Task<UserDTO> SearchByEmailAsync(string email);
+        Task<User> SearchByUserNameAsync(string username);
+        Task<User> SearchByEmailAsync(string email);
         Task<bool> CheckEmailAsync(string email);
     }
 }

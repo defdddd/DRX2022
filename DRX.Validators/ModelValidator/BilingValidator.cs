@@ -1,4 +1,4 @@
-﻿using DRX.Models;
+﻿using DRX.DTOs;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DRX.Validators.ModelValidator
 {
-    public class BilingValidator : AbstractValidator<BilingData>
+    public class BilingValidator : AbstractValidator<BilingDTO>
     {
         public BilingValidator()
         {

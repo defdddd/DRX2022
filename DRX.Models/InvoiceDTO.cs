@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DRX.Models
+namespace DRX.DTOs
 {
-    public class InvoiceData
+    public class InvoiceDTO
     {
         public int Id { get; set; }
         public int BilingId { get; set; }

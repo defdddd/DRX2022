@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Dapper.Contrib.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DRX.Models
+namespace DRX.DataAccess.Data.Domains
 {
-    public class RentData
+    [Table("RentData")]
+    public class Rent
     {
         public int Id { get; set; }
         public int UserId { get; set; }
@@ -14,5 +16,6 @@ namespace DRX.Models
         public bool IsActive { get; set; }
         public string LastLocation { get; set; }
         public string RentDate { get; set; }
+
     }
 }

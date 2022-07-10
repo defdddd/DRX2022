@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using DRX.Models;
+using DRX.DTOs;
 
 namespace DRX.Services.EmailService
 {
@@ -131,7 +131,7 @@ namespace DRX.Services.EmailService
             emailMap.Remove(key);
 
             return await _manage.GenerateTokenAsync(
-                new AuthData()
+                new AuthDTO()
                 {
                     Password = model.Password,
                     UserName = model.UserName

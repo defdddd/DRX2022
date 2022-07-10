@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DRX.Models
+namespace DRX.DTOs
 {
-    public  class AuthData
+    public class AuthDTO
     {
        public string UserName { get; set; }
        public string Password { get; set; } 

@@ -1,4 +1,4 @@
-﻿using DRX.Models;
+﻿using DRX.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DRX.Services.ModelServices.Interfaces
 {
-    public interface IInvoiceService : IService<InvoiceData>
+    public interface IInvoiceService : IService<InvoiceDTO>
     {
         Task<int> GetUserIdByBilingId(int bilingId);
-        Task<IEnumerable<InvoiceData>> GetMyInvoicesAsync(int userId);
+        Task<IEnumerable<InvoiceDTO>> GetMyInvoicesAsync(int userId);
     }
 }

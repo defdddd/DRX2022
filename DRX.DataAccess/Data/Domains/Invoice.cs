@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DRX.DataAccess.Data.DTOs
+namespace DRX.DataAccess.Data.Domains
 {
     [Table("InvoiceData")]
-    public class InvoiceDTO
+    public class Invoice
     {
         public int Id { get; set; }
         public int BilingId { get; set; }

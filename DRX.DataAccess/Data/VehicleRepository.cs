@@ -1,5 +1,5 @@
 ﻿using Dapper.Contrib.Extensions;
-using DRX.DataAccess.Data.DTOs;
+using DRX.DataAccess.Data.Domains;
 using DRX.DataAccess.Data.Interfaces;
 using DRX.DataAccess.Data.Repository;
 using DRX.DataAccess.SqlDataAcces;
@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 
 namespace DRX.DataAccess.Data
 {
-    public class VehicleRepository : Repository<VehicleDTO>, IVehicleRepository
+    public class VehicleRepository : Repository<Vehicle>, IVehicleRepository
     {
         public VehicleRepository(ISqlDataAccess sqlDataAccess)
         {
             this.sqlDataAccess = sqlDataAccess;
         }
 
-        public async Task<IEnumerable<VehicleDTO>> GetAllBySearchFieldAsync(string type, string model)
+        public async Task<IEnumerable<Vehicle>> GetAllBySearchFieldAsync(string type, string model)
         {
             if(!string.IsNullOrEmpty(type) && !string.IsNullOrEmpty(model))
               return (await GetAllAsync()).Where(x => x.Type == type && x.Model == model);

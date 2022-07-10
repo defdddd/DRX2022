@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DRX.Models
+namespace DRX.DTOs
 {
-    public class VehicleData
+    public class VehicleDTO
     {
         public int Id { get; set; }
         public string Type { get; set; }

@@ -1,4 +1,4 @@
-﻿using DRX.DataAccess.Data.DTOs;
+﻿using DRX.DataAccess.Data.Domains;
 using DRX.DataAccess.Data.Repository;
 using System;
 using System.Collections.Generic;
@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace DRX.DataAccess.Data.Interfaces
 {
-    public interface IBilingRepository : IRepository<BilingDTO>
+    public interface IBilingRepository : IRepository<Biling>
     {
-        Task<BilingDTO> GetBilingByUserIdAsync(int id);
+        Task<Biling> GetBilingByUserIdAsync(int id);
     }
 }

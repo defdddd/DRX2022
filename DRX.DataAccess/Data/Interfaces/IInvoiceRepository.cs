@@ -1,4 +1,4 @@
-﻿using DRX.DataAccess.Data.DTOs;
+﻿using DRX.DataAccess.Data.Domains;
 using DRX.DataAccess.Data.Repository;
 using System;
 using System.Collections.Generic;
@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace DRX.DataAccess.Data.Interfaces
 {
-    public interface IInvoiceRepository : IRepository<InvoiceDTO>
+    public interface IInvoiceRepository : IRepository<Invoice>
     {
-        Task<IEnumerable<InvoiceDTO>> GetMyInvoicesAsync(int bilingId);
+        Task<IEnumerable<Invoice>> GetMyInvoicesAsync(int bilingId);
     }
 }

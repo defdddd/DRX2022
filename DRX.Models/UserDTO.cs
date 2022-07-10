@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DRX.Models
+namespace DRX.DTOs
 {
-    public class UserData
+    public class UserDTO
     {
         public int Id { get; set; }
         public string UserName { get; set; }

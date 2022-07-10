@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Dapper.Contrib.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DRX.Models
+namespace DRX.DataAccess.Data.Domains
 {
-    public class BilingData
+    [Table("BilingData")]
+    public class Biling
     {
         public int Id { get; set; }
         public int UserId { get; set; }
@@ -14,6 +16,5 @@ namespace DRX.Models
         public string Email { get; set; }
         public string Adress { get; set; }
         public string Phone { get; set; }
-
     }
 }

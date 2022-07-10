@@ -1,4 +1,4 @@
-﻿using DRX.Models;
+﻿using DRX.DTOs;
 using DRX.Services.ModelServices.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -38,7 +38,7 @@ namespace DRX2022.Controllers
         }
 
         [HttpPost("insert")]
-        public async Task<IActionResult> Insert([FromBody] BilingData Biling)
+        public async Task<IActionResult> Insert([FromBody] BilingDTO Biling)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace DRX2022.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<IActionResult> Update([FromBody] BilingData Biling)
+        public async Task<IActionResult> Update([FromBody] BilingDTO Biling)
         {
             try
             {
@@ -72,7 +72,7 @@ namespace DRX2022.Controllers
             try
             {
                 
-                return Ok(await _BilingService.DeleteAsync(new BilingData { Id = id }));
+                return Ok(await _BilingService.DeleteAsync(new BilingDTO { Id = id }));
             }
             catch (Exception e)
             {
@@ -116,7 +116,7 @@ namespace DRX2022.Controllers
         #endregion
 
         #region Private methods
-        private void CheckRole(BilingData Biling)
+        private void CheckRole(BilingDTO Biling)
         {
             var userId = int.Parse(User.FindFirst("Identifier")?.Value);
             var role = User.FindFirst(ClaimTypes.Role)?.Value;

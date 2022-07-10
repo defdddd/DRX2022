@@ -1,4 +1,4 @@
-﻿using DRX.Models;
+﻿using DRX.DTOs;
 using DRX.Services.ModelServices.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -37,7 +37,7 @@ namespace DRX2022.Controllers
         }
 
         [HttpPost("insert")]
-        public async Task<IActionResult> Insert([FromBody] InvoiceData inovice)
+        public async Task<IActionResult> Insert([FromBody] InvoiceDTO inovice)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace DRX2022.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<IActionResult> Update([FromBody] InvoiceData inovice)
+        public async Task<IActionResult> Update([FromBody] InvoiceDTO inovice)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace DRX2022.Controllers
             try
             {
                
-                return Ok(await _inoviceService.DeleteAsync(new InvoiceData { Id = id }));
+                return Ok(await _inoviceService.DeleteAsync(new InvoiceDTO { Id = id }));
             }
             catch (Exception e)
             {
@@ -102,7 +102,7 @@ namespace DRX2022.Controllers
         #endregion
 
         #region Private methods
-        private async Task CheckRole(InvoiceData inovice)
+        private async Task CheckRole(InvoiceDTO inovice)
         {
             var userId = int.Parse(User.FindFirst("Identifier")?.Value);
             var role = User.FindFirst(ClaimTypes.Role)?.Value;

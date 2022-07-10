@@ -1,5 +1,4 @@
-﻿using DRX.DataAccess.Data.DTOs;
-using DRX.Models;
+﻿using DRX.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace DRX.Services.ModelServices.Interfaces
 {
-    public interface IRentService : IService<RentData>
+    public interface IRentService : IService<RentDTO>
     {
-        Task<IEnumerable<RentData>> GetMyRentsAsync(int userId);
+        Task<IEnumerable<RentDTO>> GetMyRentsAsync(int userId);
     }
 }

@@ -1,4 +1,4 @@
-﻿using DRX.Models;
+﻿using DRX.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +9,8 @@ namespace DRX.Services.AuthService
 {
     public interface IAuthService
     {
-        Task<dynamic> GenerateTokenAsync(AuthData authData);
-        Task<bool> IsValidUserNameAndPassowrdAsync(AuthData authData);
-        Task<UserData> RegisterAsync(UserData user);
+        Task<dynamic> GenerateTokenAsync(AuthDTO authData);
+        Task<bool> IsValidUserNameAndPassowrdAsync(AuthDTO authData);
+        Task<UserDTO> RegisterAsync(UserDTO user);
     }
 }

@@ -1,13 +1,11 @@
-﻿using Dapper.Contrib.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DRX.DataAccess.Data.DTOs
+namespace DRX.DTOs
 {
-    [Table("BilingData")]
     public class BilingDTO
     {
         public int Id { get; set; }
@@ -16,5 +14,6 @@ namespace DRX.DataAccess.Data.DTOs
         public string Email { get; set; }
         public string Adress { get; set; }
         public string Phone { get; set; }
+
     }
 }

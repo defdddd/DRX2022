@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using DRX.DataAccess.Data.DTOs;
+using DRX.DataAccess.Data.Domains;
 using DRX.DataAccess.UnitOfWork;
-using DRX.Models;
+using DRX.DTOs;
 using DRX.Validators.ModelValidator;
 using DRX.Validators.ToolValidator;
 using FluentValidation;
@@ -40,7 +40,7 @@ namespace DRX.Services.AuthService
             return await _repostiories.UserRepository.SearchByUserNameAsync(userName) != null;
         }
 
-        public async Task<dynamic> GenerateTokenAsync(AuthData authData)
+        public async Task<dynamic> GenerateTokenAsync(AuthDTO authData)
         {
             await IsValidUserNameAndPassowrdAsync(authData);
             var username = authData.UserName;
@@ -80,7 +80,7 @@ namespace DRX.Services.AuthService
         }
 
 
-        public async Task<bool> IsValidUserNameAndPassowrdAsync(AuthData authData)
+        public async Task<bool> IsValidUserNameAndPassowrdAsync(AuthDTO authData)
         {
             var user = await _repostiories.UserRepository.SearchByUserNameAsync(authData.UserName) ??
                            throw new ValidationException("Invalid username or password");
@@ -90,7 +90,7 @@ namespace DRX.Services.AuthService
             return true;
         }
 
-        public async Task<UserData> RegisterAsync(UserData user)
+        public async Task<UserDTO> RegisterAsync(UserDTO user)
         {
             if (await CheckEmailAsync(user.Email))
                 throw new ValidationException("Invalid email");
@@ -104,9 +104,9 @@ namespace DRX.Services.AuthService
 
             await ValidatorTool.FluentValidate(validator, user);
 
-            var result = _mapper.Map<UserData, UserDTO>(user);
+            var result = _mapper.Map<UserDTO, User>(user);
 
-            return _mapper.Map<UserData>(await _repostiories.UserRepository.InsertAsync(result));
+            return _mapper.Map<UserDTO>(await _repostiories.UserRepository.InsertAsync(result));
            
         }
     }

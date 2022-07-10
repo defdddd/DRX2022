@@ -1,4 +1,4 @@
-﻿using DRX.DataAccess.Data.DTOs;
+﻿using DRX.DataAccess.Data.Domains;
 using DRX.DataAccess.Data.Interfaces;
 using DRX.DataAccess.Data.Repository;
 using DRX.DataAccess.SqlDataAcces;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DRX.DataAccess.Data
 {
-    public class RentRepository : Repository<RentDTO>, IRentRepository
+    public class RentRepository : Repository<Rent>, IRentRepository
     {
         public RentRepository(ISqlDataAccess sqlDataAccess)
         {
@@ -27,7 +27,7 @@ namespace DRX.DataAccess.Data
             return (await GetAllAsync()).Where(x => x.VehicleId == vehicleId && x.IsActive).Any();
         }
 
-        public async Task<IEnumerable<RentDTO>> GetMyRentsAsync(int userId)
+        public async Task<IEnumerable<Rent>> GetMyRentsAsync(int userId)
         {
             return (await GetAllAsync()).Where((x) => x.UserId == userId);
         }

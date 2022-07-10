@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DRX.Models\DRX.Models.csproj" />
+    <ProjectReference Include="..\DRX.Models\DRX.DTOs.csproj" />
   </ItemGroup>
 
 </Project>

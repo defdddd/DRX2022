@@ -1,4 +1,4 @@
-﻿using DRX.Models;
+﻿using DRX.DTOs;
 using DRX.Validators.ModelValidator;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,11 +14,11 @@ namespace DRX.DependencyInjection
     {
         public static IServiceCollection ValidationConfiguration(this IServiceCollection services)
         {
-            services.AddSingleton<IValidator<UserData>, UserValidator>();
-            services.AddSingleton<IValidator<BilingData>, BilingValidator>();
-            services.AddSingleton<IValidator<InvoiceData>, InvoiceValidator>();
-            services.AddSingleton<IValidator<VehicleData>, VehicleValidator>();
-            services.AddSingleton<IValidator<RentData>, RentValidator>();
+            services.AddSingleton<IValidator<UserDTO>, UserValidator>();
+            services.AddSingleton<IValidator<BilingDTO>, BilingValidator>();
+            services.AddSingleton<IValidator<InvoiceDTO>, InvoiceValidator>();
+            services.AddSingleton<IValidator<VehicleDTO>, VehicleValidator>();
+            services.AddSingleton<IValidator<RentDTO>, RentValidator>();
 
             return services;
         }

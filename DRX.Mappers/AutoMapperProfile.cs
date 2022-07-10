@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using DRX.DataAccess.Data.DTOs;
-using DRX.Models;
+using DRX.DataAccess.Data.Domains;
+using DRX.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +13,11 @@ namespace DRX.Mappers
     {
         public AutoMapperProfile()
         {
-            CreateMap<VehicleData, VehicleDTO>().ReverseMap();
-            CreateMap<BilingData, BilingDTO>().ReverseMap();
-            CreateMap<InvoiceData, InvoiceDTO>().ReverseMap();
-            CreateMap<RentData, RentDTO>().ReverseMap();
-            CreateMap<UserData, UserDTO>().ReverseMap();
+            CreateMap<VehicleDTO, Vehicle>().ReverseMap();
+            CreateMap<BilingDTO, Biling>().ReverseMap();
+            CreateMap<InvoiceDTO, Invoice>().ReverseMap();
+            CreateMap<RentDTO, Rent>().ReverseMap();
+            CreateMap<UserDTO, User>().ReverseMap();
         }
     }
 }

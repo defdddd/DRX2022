@@ -1,4 +1,4 @@
-﻿using DRX.Models;
+﻿using DRX.DTOs;
 using DRX.Services.AuthService;
 using DRX.Services.EmailService;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +23,7 @@ namespace DRX2022.Controllers
       
         // POST api/<AuthController>
         [HttpPost]
-        public async Task<IActionResult> Create(AuthData authData)
+        public async Task<IActionResult> Create(AuthDTO authData)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace DRX2022.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] UserData user)
+        public async Task<IActionResult> Register([FromBody] UserDTO user)
         {
             try
             {

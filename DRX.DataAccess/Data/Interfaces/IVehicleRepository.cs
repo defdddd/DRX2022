@@ -1,4 +1,4 @@
-﻿using DRX.DataAccess.Data.DTOs;
+﻿using DRX.DataAccess.Data.Domains;
 using DRX.DataAccess.Data.Repository;
 using System;
 using System.Collections.Generic;
@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace DRX.DataAccess.Data.Interfaces
 {
-    public interface IVehicleRepository : IRepository<VehicleDTO>
+    public interface IVehicleRepository : IRepository<Vehicle>
     {
-        Task<IEnumerable<VehicleDTO>> GetAllBySearchFieldAsync(string type, string model);
+        Task<IEnumerable<Vehicle>> GetAllBySearchFieldAsync(string type, string model);
     }
 }

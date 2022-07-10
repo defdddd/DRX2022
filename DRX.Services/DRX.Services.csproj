@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DRX.DataAccess\DRX.DataAccess.csproj" />
-    <ProjectReference Include="..\DRX.Models\DRX.Models.csproj" />
+    <ProjectReference Include="..\DRX.Models\DRX.DTOs.csproj" />
     <ProjectReference Include="..\DRX.Validators\DRX.Validators.csproj" />
   </ItemGroup>
 

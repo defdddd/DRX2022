@@ -1,4 +1,4 @@
-﻿using DRX.Models;
+﻿using DRX.DTOs;
 using DRX.Services.ModelServices.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -38,7 +38,7 @@ namespace DRX2022.Controllers
 
         [HttpPost("insert")]
         [Authorize(Roles = "Admin,User")]
-        public async Task<IActionResult> Insert([FromBody] RentData Rent)
+        public async Task<IActionResult> Insert([FromBody] RentDTO Rent)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace DRX2022.Controllers
 
         [HttpPut("update")]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update([FromBody] RentData Rent)
+        public async Task<IActionResult> Update([FromBody] RentDTO Rent)
         {
             try
             {
@@ -72,7 +72,7 @@ namespace DRX2022.Controllers
             try
             {
                
-                return Ok(await _RentService.DeleteAsync(new RentData { Id = id }));
+                return Ok(await _RentService.DeleteAsync(new RentDTO { Id = id }));
             }
             catch (Exception e)
             {
@@ -101,7 +101,7 @@ namespace DRX2022.Controllers
         #endregion
 
         #region Private methods
-        private void CheckRole(RentData Rent)
+        private void CheckRole(RentDTO Rent)
         {
             var userId = int.Parse(User.FindFirst("Identifier")?.Value);
             var role = User.FindFirst(ClaimTypes.Role)?.Value;
