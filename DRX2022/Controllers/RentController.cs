@@ -52,11 +52,12 @@ namespace DRX2022.Controllers
         }
 
         [HttpPut("update")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> Update([FromBody] RentDTO Rent)
         {
             try
             {
+                CheckRole(Rent);
                 return Ok(await _RentService.UpdateAsync(Rent));
             }
             catch (Exception e)

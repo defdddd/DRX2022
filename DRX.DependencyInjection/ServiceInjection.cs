@@ -19,7 +19,7 @@ namespace DRX.DependencyInjection
         public static IServiceCollection ServiceConfiguration(this IServiceCollection services, IConfiguration Config)
         {
             //AuthService
-            services.AddSingleton<IAuthService>
+            services.AddTransient<IAuthService>
             (
                 provider => new AuthService(provider.GetService<IRepositories>(),
                     Config.GetConnectionString("MySecretKey"),
@@ -27,7 +27,7 @@ namespace DRX.DependencyInjection
             );
 
             //EmailService
-            services.AddSingleton<IEmailService>
+            services.AddTransient<IEmailService>
                 (
                     x =>
                        new EmailService(x.GetService<IAuthService>(),
@@ -36,11 +36,11 @@ namespace DRX.DependencyInjection
                 ));
 
             //ModelServices
-            services.AddSingleton<IBilingService, BilingService>();
-            services.AddSingleton<IInvoiceService, InvoiceService>();
-            services.AddSingleton<IUserService, UserService>();
-            services.AddSingleton<IRentService, RentService>();
-            services.AddSingleton<IVehicleService, VehicleService>();
+            services.AddTransient<IBilingService, BilingService>();
+            services.AddTransient<IInvoiceService, InvoiceService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IRentService, RentService>();
+            services.AddTransient<IVehicleService, VehicleService>();
 
             return services;
         }

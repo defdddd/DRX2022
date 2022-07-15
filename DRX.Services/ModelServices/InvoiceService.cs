@@ -43,9 +43,9 @@ namespace DRX.Services.ModelServices
 
         public async Task<IEnumerable<InvoiceDTO>> GetMyInvoicesAsync(int userId)
         {
-            var bilingId = (await _repositories.BilingRepository.GetBilingByUserIdAsync(userId)).Id;
+            var biling = (await _repositories.BilingRepository.GetBilingByUserIdAsync(userId)) ?? throw new Exception("No Data");
 
-            var inoviceDTOs= await _repositories.InoviceRepository.GetMyInvoicesAsync(bilingId);
+            var inoviceDTOs= await _repositories.InoviceRepository.GetMyInvoicesAsync(biling.Id);
 
             return _mapper.Map<IEnumerable<InvoiceDTO>>(inoviceDTOs);
         }

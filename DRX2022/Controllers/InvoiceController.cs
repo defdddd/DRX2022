@@ -84,7 +84,7 @@ namespace DRX2022.Controllers
         #region Other Operation
 
         [HttpGet("myInvoicedata")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, User")]
         public async Task<IActionResult> GetMyInoviceData()
         {
             try

@@ -15,7 +15,7 @@ namespace DRX.DependencyInjection
         public static IServiceCollection RepositoryConfiguration(this IServiceCollection services, IConfiguration Config)
         {
             services.AddSingleton<ISqlDataAccess>(new SqlDataAccess(Config.GetConnectionString("DataBase")));
-            services.AddSingleton<IRepositories, Repositories>();
+            services.AddTransient<IRepositories, Repositories>();
 
             return services;
         }

@@ -14,11 +14,11 @@ namespace DRX.DependencyInjection
     {
         public static IServiceCollection ValidationConfiguration(this IServiceCollection services)
         {
-            services.AddSingleton<IValidator<UserDTO>, UserValidator>();
-            services.AddSingleton<IValidator<BilingDTO>, BilingValidator>();
-            services.AddSingleton<IValidator<InvoiceDTO>, InvoiceValidator>();
-            services.AddSingleton<IValidator<VehicleDTO>, VehicleValidator>();
-            services.AddSingleton<IValidator<RentDTO>, RentValidator>();
+            services.AddTransient<IValidator<UserDTO>, UserValidator>();
+            services.AddTransient<IValidator<BilingDTO>, BilingValidator>();
+            services.AddTransient<IValidator<InvoiceDTO>, InvoiceValidator>();
+            services.AddTransient<IValidator<VehicleDTO>, VehicleValidator>();
+            services.AddTransient<IValidator<RentDTO>, RentValidator>();
 
             return services;
         }
